@@ -1,3 +1,12 @@
+//INSTRUCTION
+//AHMED-MUSIC-PLAYER
+//IGNITE
+//PRESS PLAY
+//LOAD A FILE ONTO THE MUSIC PLAYER
+//PRESS PLAY
+
+
+
 boolean fileLoaded = false;
 
 color blue = #335755;
@@ -48,12 +57,12 @@ void draw() {
   smooth(28);
   
   for (int i = 0; i<900; i+=200) {
-    image(bckgrd, i, 0);              //Stamps background Image.
+    image(bckgrd, i, 0);              
   }
 
   
   if (fileLoaded) {
-    soundVision();                  //Calls visualizer function
+    soundVision();                  
     player.setGain(volume);
     
     fill(0, 0, 0, 255);
@@ -61,7 +70,7 @@ void draw() {
     textAlign(CENTER);
     text(title, width/2, 30);
   }
-  buttons();                        //controls other smaller functions.
+  buttons();                        
 }
 
 void mouseReleased() {
@@ -72,7 +81,7 @@ void mouseReleased() {
     if (state == "PLAY" && fileLoaded) {                              
       state = "PAUSE";                                  //Plays song.
       player.play();
-      player.setVolume(volume); //~~~~~~~~~~~~~~~~~~Volume?------------------\\
+      player.setVolume(volume); //~Volume-\\
     } else if (state == "PAUSE") {
       state = "PLAY";                                  //Pauses song.
       player.pause();
@@ -80,7 +89,7 @@ void mouseReleased() {
   }
 
   if (mouseX>width-110 && mouseX<width && mouseY < 40) {
-    selectInput("Select a file to process:", "fileSelected");    //Calls selectInput if button pressed.
+    selectInput("Select a file to process:", "fileSelected");
   }
 }
 
@@ -116,16 +125,16 @@ void soundVision() {
 
   for (int i = 0; i < fft.specSize (); i+=5) {
 
-    // draw the line for frequency band i, scaling it up a bit so we can see it
+    // draw the line for frequency 
     colorMode(HSB);
     //stroke(i, 255, 255);
 
-    //line( i, height, i, height - fft.getBand(i)*8 );
+    //
 
 
 
     rect(i+width/2, height - fft.getBand(i)*8, 10, height);
-    //ellipse(i+width/2,height + 10 - fft.getBand(i)*5, 10,10);
+    //ellipse
   }
 
   for (int i = 0; i < fft.specSize (); i+=5) {
@@ -144,4 +153,3 @@ void soundVision() {
     //ellipse(i,height + 10 - fft.getBand(i)*5, 10,10);
   }
 }
-
